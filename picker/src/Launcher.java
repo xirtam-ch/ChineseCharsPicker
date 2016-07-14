@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 /**
  * Created by xirtam on 16/4/2.
@@ -15,6 +16,7 @@ public class Launcher extends JFrame implements MouseListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(200, 80, w, h);
         this.setLayout(null);
+        this.setTitle("中文字符拾取器by:xirtam.zhang@gmail.com");
 
         textArea = new TextArea();
         textArea.setBounds(10, 10, w - 20, (h - bottom) / 2 - 20);
@@ -44,11 +46,12 @@ public class Launcher extends JFrame implements MouseListener {
     private String delete(String str) {
         char[] chars = str.toCharArray();
         StringBuffer sb = new StringBuffer();
-        ArrayList<Character> result = new ArrayList<Character>();
+        TreeSet<String> result = new TreeSet<String>();
         for (char c : chars) {
-            if (!result.contains(c)) {
-                sb.append(c);
-            }
+            result.add("" + c);
+        }
+        for (String string : result) {
+            sb.append(string);
         }
         return sb.toString();
     }
